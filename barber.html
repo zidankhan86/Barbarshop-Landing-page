@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium Barber Experience</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0f0f0f;
+      --dark: #1a1a1a;
+      --ash: #2a2a2a;
+      --yellow: #ffd700;
+      --yellow-dark: #e6c200;
+      --light: #e0e0e0;
+      --gray: #9e9e9e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--light);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .navbar {
+      background-color: rgba(15,15,15,0.92) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,215,0,0.08);
+    }
+
+    .navbar-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.1rem;
+      color: var(--yellow) !important;
+      letter-spacing: 2px;
+    }
+
+    .nav-link {
+      color: var(--light) !important;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem !important;
+    }
+
+    .nav-link:hover {
+      color: var(--yellow) !important;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hamburger-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger-icon span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--yellow);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    .btn-yellow {
+      background-color: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0;
+      transition: all 0.3s;
+    }
+
+    .btn-yellow:hover {
+      background-color: var(--yellow-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.25);
+      color: var(--black);
+    }
+
+    .service-card {
+      background: var(--dark);
+      border: 1px solid rgba(255,215,0,0.12);
+      transition: all 0.35s;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: all 0.35s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--yellow);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .service-card:hover .service-card-img {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .service-price {
+      color: var(--yellow);
+      font-size: 2.1rem;
+      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-size: 3.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--yellow);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .booking-form {
+      background: var(--dark);
+      padding: 3rem;
+      border: 1px solid rgba(255,215,0,0.12);
+    }
+
+    .testimonial-card {
+      background: var(--dark);
+      border-left: 4px solid var(--yellow);
+      padding: 1.5rem;
+    }
+
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,215,0,0.08);
+    }
+
+    .social-icon {
+      color: var(--light);
+      font-size: 1.6rem;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .social-icon:hover {
+      color: var(--yellow);
+      transform: translateY(-4px);
+    }
+
+    /* Form Controls */
+    .form-control:focus,
+    .form-select:focus {
+      background-color: var(--dark);
+      border-color: var(--yellow);
+      color: var(--light);
+      box-shadow: 0 0 0 0.2rem rgba(255,215,0,0.25);
+    }
+
+    /* Section Background Colors */
+    .bg-black {
+      background-color: var(--black) !important;
+    }
+
+    .bg-ash {
+      background-color: var(--ash) !important;
+    }
+
+    /* AOS overrides / custom durations */
+    [data-aos][data-aos][data-aos-duration="900"] {
+      transition-duration: 900ms;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 991px) {
+      .navbar-brand {
+        font-size: 1.8rem;
+      }
+
+      .navbar-collapse {
+        background-color: rgba(15,15,15,0.98);
+        padding: 1rem;
+        margin-top: 0.5rem;
+        border-radius: 4px;
+      }
+
+      .nav-link {
+        padding: 0.75rem 1rem !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title { 
+        font-size: 2.5rem; 
+      }
+
+      .section-title::after {
+        width: 60px;
+        height: 3px;
+      }
+
+      #hero {
+        min-height: 50vh;
+        padding-top: 70px;
+      }
+
+      .hero-content h1 { 
+        font-size: 3rem !important; 
+        line-height: 1 !important;
+      }
+
+      .hero-content p {
+        font-size: 1rem !important;
+      }
+
+      .btn-yellow {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .booking-form {
+        padding: 2rem 1.5rem;
+      }
+
+      .service-card-img {
+        height: 180px;
+      }
+
+      .service-price {
+        font-size: 1.8rem;
+      }
+
+      .testimonial-card {
+        padding: 1.25rem;
+      }
+
+      .social-icon {
+        font-size: 1.4rem;
+      }
+
+      .hamburger-icon {
+        display: flex;
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 0;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .section-title { 
+        font-size: 2rem; 
+      }
+
+      #hero {
+        min-height: 45vh;
+        padding-top: 70px;
+      }
+
+      .hero-content h1 { 
+        font-size: 2.5rem !important; 
+      }
+
+      .hero-content p {
+        font-size: 0.95rem !important;
+        margin-bottom: 2rem !important;
+      }
+
+      .btn-yellow {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.85rem;
+      }
+
+      .booking-form {
+        padding: 1.5rem 1rem;
+      }
+
+      .service-card-img {
+        height: 150px;
+      }
+
+      .service-price {
+        font-size: 1.5rem;
+      }
+
+      .service-card h4 {
+        font-size: 1rem;
+      }
+
+      .service-card small {
+        font-size: 0.75rem;
+      }
+
+      .service-card .p-4 {
+        padding: 0.75rem !important;
+      }
+
+      footer h4,
+      footer h6 {
+        font-size: 1rem;
+      }
+
+      footer p,
+      footer address {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      #hero {
+        min-height: 40vh;
+      }
+
+      .hero-content h1 { 
+        font-size: 2rem !important; 
+      }
+
+      .section-title { 
+        font-size: 1.8rem; 
+      }
+
+      .booking-form {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar" data-aos="fade-down" data-aos-duration="800">
+    <div class="container">
+      <a class="navbar-brand" href="#">RAZOR<span class="text-white">CUT</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#book">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO - Black Background -->
+  <section id="hero" class="d-flex align-items-center"
+    style="
+      background: linear-gradient(rgba(15,15,15,0.75), rgba(15,15,15,0.85)),
+      url('https://media.istockphoto.com/id/1473584880/photo/black-man-at-barber-shop.jpg?s=612x612&w=0&k=20&c=XiSFOyVlvOifOhyVpexXshqI0-vuia7aE5LHTcp6490=')
+      center center / cover no-repeat;
+    ">
+    
+    <div class="container text-center text-md-start hero-content" 
+         data-aos="fade-up" 
+         data-aos-duration="1000" 
+         data-aos-delay="300">
+         
+      <h1 class="display-2 fw-bold mb-3" style="font-size: 5.8rem; line-height: 0.95;">
+        PREMIUM<br>BARBER<br>EXPERIENCE
+      </h1>
+      
+      <p class="lead fs-4 mb-5 opacity-90">
+        Sharp Cuts. Fresh Style.<br>Precision Crafted for the Modern Man.
+      </p>
+      
+      <a href="#book" class="btn btn-yellow btn-lg text-uppercase fw-bold"
+         data-aos="zoom-in" 
+         data-aos-delay="700"
+         data-aos-duration="800">
+         Book Now
+      </a>
+      
+    </div>
+  </section>
+
+  <!-- SERVICES - Ash Background -->
+  <section id="services" class="py-5 py-md-5 bg-ash">
+    <div class="container py-5">
+      <h2 class="section-title text-center" data-aos="fade-up">Our Services</h2>
+      
+      <div class="row g-4 mt-3">
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" 
+                 alt="Classic Haircut" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Classic Haircut</h4>
+              <div class="service-price">$25</div>
+              <small class="opacity-75">Precision fade • Scissor cut • Hot towel</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" 
+                 alt="Beard Trim" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Beard Trim</h4>
+              <div class="service-price">$15</div>
+              <small class="opacity-75">Shape up • Line up • Hot towel</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card h-100 border-warning border-2 position-relative">
+            <span class="badge bg-warning mt-3 text-dark position-absolute top-0 end-0 translate-middle-y me-4" style="z-index: 10;">POPULAR</span>
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" 
+                 alt="Haircut + Beard" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Haircut + Beard</h4>
+              <div class="service-price">$35</div>
+              <small class="opacity-75">Full package • Best value</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" 
+                 alt="Kids Cut" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Kids Cut</h4>
+              <div class="service-price">$20</div>
+              <small class="opacity-75">Ages 3–12 • Gentle experience</small>
+            </div>
+          </div>
+        </div>
+
+<div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" 
+                 alt="Classic Haircut" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Classic Haircut</h4>
+              <div class="service-price">$25</div>
+              <small class="opacity-75">Precision fade • Scissor cut • Hot towel</small>
+            </div>
+          </div>
+        </div>
+
+<div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card h-100 border-warning border-2 position-relative">
+            <span class="badge bg-warning mt-3 text-dark position-absolute top-0 end-0 translate-middle-y me-4" style="z-index: 10;">POPULAR</span>
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" 
+                 alt="Haircut + Beard" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Haircut</h4>
+              <div class="service-price">$40</div>
+              <small class="opacity-75">Full package • Best value</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" 
+                 alt="Beard Trim" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Beard Trim</h4>
+              <div class="service-price">$15</div>
+              <small class="opacity-75">Shape up • Line up • Hot towel</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-card h-100">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" 
+                 alt="Kids Cut" class="service-card-img">
+            <div class="p-4 text-center">
+              <h4 class="mb-3">Kids Cut</h4>
+              <div class="service-price">$20</div>
+              <small class="opacity-75">Ages 3–12 • Gentle experience</small>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING - Black Background -->
+  <section id="book" class="py-5 bg-black">
+    <div class="container py-5">
+      <h2 class="section-title text-center" data-aos="fade-up">Book Your Appointment</h2>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
+          <form class="booking-form rounded">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <input type="text" class="form-control form-control-lg bg-dark border-secondary text-white" placeholder="Full Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="tel" class="form-control form-control-lg bg-dark border-secondary text-white" placeholder="Phone Number" required>
+              </div>
+              <div class="col-md-6">
+                <select class="form-select form-select-lg bg-dark border-secondary text-white" required>
+                  <option selected disabled value="">Select Service</option>
+                  <option>Haircut - $25</option>
+                  <option>Beard Trim - $15</option>
+                  <option>Haircut + Beard - $35</option>
+                  <option>Kids Cut - $20</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <select class="form-select form-select-lg bg-dark border-secondary text-white" required>
+                  <option selected disabled value="">Select Barber</option>
+                  <option>Alex - Master Barber</option>
+                  <option>Mike - Senior</option>
+                  <option>James - Specialist</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <input type="datetime-local" class="form-control form-control-lg bg-dark border-secondary text-white" required>
+              </div>
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-yellow btn-lg text-uppercase fw-bold px-5">Confirm Booking</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS - Ash Background -->
+  <section id="testimonials" class="py-5 bg-ash">
+    <div class="container py-5">
+      <h2 class="section-title text-center" data-aos="fade-up">What Our Clients Say</h2>
+
+      <div class="row g-4 mt-4">
+        <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+          <div class="testimonial-card h-100">
+            <div class="mb-3 text-warning">★★★★★</div>
+            <p class="mb-4">"Best fade I've ever had. These guys know exactly what they're doing. 10/10"</p>
+            <div class="d-flex align-items-center">
+              <div class="me-3 bg-secondary rounded-circle" style="width:50px;height:50px;"></div>
+              <div>
+                <h6 class="mb-0">Marcus R.</h6>
+                <small class="opacity-75">Regular since 2023</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card h-100">
+            <div class="mb-3 text-warning">★★★★★</div>
+            <p class="mb-4">"The beard trim changed my whole look. Professional and relaxed atmosphere."</p>
+            <div class="d-flex align-items-center">
+              <div class="me-3 bg-secondary rounded-circle" style="width:50px;height:50px;"></div>
+              <div>
+                <h6 class="mb-0">Daniel K.</h6>
+                <small class="opacity-75">First timer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
+          <div class="testimonial-card h-100">
+            <div class="mb-3 text-warning">★★★★★</div>
+            <p class="mb-4">"My son loves coming here. They make him feel comfortable. Great with kids!"</p>
+            <div class="d-flex align-items-center">
+              <div class="me-3 bg-secondary rounded-circle" style="width:50px;height:50px;"></div>
+              <div>
+                <h6 class="mb-0">James T.</h6>
+                <small class="opacity-75">Father of 2</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT - Black Background -->
+  <section id="about" class="py-5 bg-black">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-md-6 order-2 order-md-1" data-aos="fade-right">
+          <h2 class="section-title">About RazorCut</h2>
+          <p class="lead opacity-90 mb-4">
+            Where tradition meets modern style. We've been crafting exceptional haircuts and grooming experiences since 2015.
+          </p>
+          <p class="opacity-75">
+            Our master barbers combine classic techniques with contemporary trends to deliver precision cuts that suit your individual style. Every visit is more than just a haircut—it's an experience in premium men's grooming.
+          </p>
+        </div>
+        <div class="col-md-6 order-1 order-md-2" data-aos="fade-left" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80" 
+               alt="Barbershop Interior" 
+               class="img-fluid w-100"
+               style="border: 1px solid rgba(255,215,0,0.12);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER - Ash Background -->
+  <footer class="py-5 bg-ash" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-right">
+          <h4 class="text-warning mb-3">RAZORCUT</h4>
+          <p class="opacity-75">
+            Premium barber experience<br>
+            Where style meets precision
+          </p>
+        </div>
+
+        <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+          <h6 class="text-warning mb-3">VISIT US</h6>
+          <address class="opacity-75 mb-0">
+            128 King Street<br>
+            New Center District<br>
+            Dhaka 1212
+          </address>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-left" data-aos-delay="400">
+          <h6 class="text-warning mb-3">CONTACT</h6>
+          <p class="opacity-75 mb-2">+880 1712-345678</p>
+          <p class="opacity-75 mb-4">book@razorcut.com</p>
+          
+          <div class="d-flex gap-4">
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-5 opacity-25">
+
+      <div class="text-center opacity-50 small">
+        © 2026 RazorCut Barbershop. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out',
+      offset: 80
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu after clicking
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            navbarToggler.click();
+          }
+        }
+      });
+    });
+
+    // Form submission handler
+    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your booking! We will contact you shortly to confirm your appointment.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
